@@ -8,6 +8,7 @@ Kwadratowe zagadnienie przydziału
 (Quadratic Assignment Problem, QAP)
 """
 
+
 class ArtificialBeeColony:
     def __init__(self, data: dict, population: int, iterations: int, limit: int, neighbourhood: str):
         self.n = data['n']
@@ -53,8 +54,6 @@ class ArtificialBeeColony:
     def find_solution(self):
         c = dict()
 
-        #############   1   #############
-
         x_1 = [i for i in range(1, self.n + 1)]
         random.shuffle(x_1)
 
@@ -64,8 +63,6 @@ class ArtificialBeeColony:
         solutions = [x_1]
         c[1] = [0]
 
-        #############   2   #############
-
         for i_for_c, i in enumerate(range(self.population), start=1):
             x_i = [i for i in range(1, self.n + 1)]
             random.shuffle(x_i)
@@ -73,23 +70,19 @@ class ArtificialBeeColony:
             c[i_for_c] = 0
 
             if self.goal_func(x_i) < best_val:
-                x_best = copy(x_i)  # x_best - aktualna najlepsza kolejność zakładów
-                best_val = self.goal_func(x_i)  # best_val - aktualny najmniejszy (najlepszy) koszt
-                print(best_val)  # goal_func - wzór problemu
+                x_best = copy(x_i)                                  # x_best - aktualna najlepsza kolejność zakładów
+                best_val = self.goal_func(x_i)                      # best_val - aktualny najmniejszy (najlepszy) koszt
+                print(best_val)                                     # goal_func - wzór problemu
 
-        #############   3   #############
-
-        for it in range(self.iterations):  # warunek końca
-
-            #############   3.1   #############
+        for it in range(self.iterations):                           # warunek końca
 
             for i_for_c, i in enumerate(range(self.population), start=1):
 
                 x_prime = get_neighbour(solutions[i],
-                                        self.neighbourhood)  # generowanie losowego sąsiada, neighbourhood - metoda losowania
-                val_prime = self.goal_func(x_prime)  # koszt dla wylosowanego sąsiada
+                                        self.neighbourhood)         # generowanie losowego sąsiada, neighbourhood - metoda losowania
+                val_prime = self.goal_func(x_prime)                 # koszt dla wylosowanego sąsiada
 
-                x_i_val = self.goal_func(solutions[i])  # koszt dla aktualnego wylosowanego rozwiązania
+                x_i_val = self.goal_func(solutions[i])              # koszt dla aktualnego wylosowanego rozwiązania
 
                 if val_prime < x_i_val:
                     c[i_for_c] = 0
@@ -102,11 +95,7 @@ class ArtificialBeeColony:
                     x_best = copy(x_prime)
                     best_val = val_prime
 
-            #############   3.2   #############
-
             probabilities = self.roulette(solutions)
-
-            #############   3.3   #############
 
             for i_for_c, i in enumerate(range(self.population), start=1):
 
@@ -115,8 +104,7 @@ class ArtificialBeeColony:
 
                 # sprawdzamy czy wylosowane praw-stwo jest w zakresie każdego rozwiązania.
                 for l in range(len(probabilities)):
-                    if ran < probabilities[
-                        l]:  # jeśli tak - to wykonujemy to zadanie, jeśli nie, to sprawdzamy kolejne praw-stwo dla kolejnego zadania
+                    if ran < probabilities[l]:        # jeśli tak - to wykonujemy to zadanie, jeśli nie, to sprawdzamy kolejne praw-stwo dla kolejnego zadania
                         j = l
                         break
 
@@ -136,8 +124,6 @@ class ArtificialBeeColony:
                     x_best = copy(x_prime)
                     best_val = prime_val
 
-            #############   3.4   #############
-
             for i_for_c, i in enumerate(range(self.population), start=1):
                 if c[i_for_c] > self.limit:
                     c[i_for_c] = 0
@@ -147,8 +133,6 @@ class ArtificialBeeColony:
                         print(f"{x_i_val}, iter: {it}")
                         x_best = copy(solutions[i])
                         best_val = x_i_val
-
-        #############   4   #############
 
         self.solution = x_best
         self.best_val = best_val
