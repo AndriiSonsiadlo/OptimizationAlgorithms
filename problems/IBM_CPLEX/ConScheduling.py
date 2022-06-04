@@ -4,6 +4,10 @@ from docplex.mp.model import Model
 from generator import RandomNumberGenerator
 from timer import timeit
 
+"""
+Problem ciągły
+Problem szeregowania na równoległych maszynach
+"""
 
 def ConScheduling_gen(seed, n, m, verbose=False):
     gen = RandomNumberGenerator(seedValue=seed)

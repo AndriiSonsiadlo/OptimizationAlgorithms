@@ -1,13 +1,12 @@
 import random
 from copy import copy
 
-import numpy as np
-from pandas import DataFrame
-
 from utils import get_neighbour
-from ABC_problem import Problem
-from timer import Timer
 
+"""
+Kwadratowe zagadnienie przydziału 
+(Quadratic Assignment Problem, QAP)
+"""
 
 class ArtificialBeeColony:
     def __init__(self, data: dict, population: int, iterations: int, limit: int, neighbourhood: str):

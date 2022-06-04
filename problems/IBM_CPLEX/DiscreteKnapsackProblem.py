@@ -3,6 +3,11 @@ from docplex.mp.model import Model
 from generator import RandomNumberGenerator
 from timer import timeit
 
+"""
+Problem dyskretny
+Problem dwuplecakowy
+"""
+
 
 def DiscreteKnapsackProblem_gen(n, verbose):
     seed = 114

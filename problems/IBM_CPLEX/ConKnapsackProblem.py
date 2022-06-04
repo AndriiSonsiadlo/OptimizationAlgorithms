@@ -1,21 +1,15 @@
 from docplex.mp.model import Model
-from datetime import datetime
+
 from generator import RandomNumberGenerator
+from timer import timeit
+
+"""
+Problem ciągły
+Problem dwuplecakowy
+"""
 
 
-def timeit(func):
-    def wrapper(*args, **kwargs):
-        start = datetime.now()
-
-        result = func(*args, **kwargs)
-
-        print('Time: %s' % str(datetime.now() - start))
-
-        return result
-
-    return wrapper
-
-
+@timeit
 def ConKnapsackProblem_gen(n, verbose):
     seed = 114
     gen = RandomNumberGenerator(seedValue=seed)

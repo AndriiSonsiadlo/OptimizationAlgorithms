@@ -1,10 +1,9 @@
 from pandas import DataFrame
+from tqdm import tqdm
 
 from problem import Problem
 from rs import RandomSearch
 from sa import SimulatedAnnealing
-from tqdm import tqdm
-
 from timer import *
 
 """
@@ -92,7 +91,8 @@ def solutions_to_str(solutions: list, algorithm="RS | SA"):
     for solution in solutions:
         sol.append([solution.n, solution.iterations, solution.minimal_delay, round(solution.time, 3)])
 
-    sol = DataFrame(data=sol, columns=["n", "iterations", "minimal_cost", "time"], index=["" for i in range(len(solutions))])
+    sol = DataFrame(data=sol, columns=["n", "iterations", "minimal_cost", "time"],
+                    index=["" for i in range(len(solutions))])
 
     solution_str = f"{start_banner}{sol}\n\n"
     return solution_str

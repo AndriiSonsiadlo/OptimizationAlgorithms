@@ -3,6 +3,10 @@ from pandas import DataFrame
 
 from generator import RandomNumberGenerator
 
+"""
+Kwadratowe zagadnienie przydziału 
+(Quadratic Assignment Problem, QAP)
+"""
 
 class Problem:
     """ Scheduling on a single machine with total weighted tardiness """

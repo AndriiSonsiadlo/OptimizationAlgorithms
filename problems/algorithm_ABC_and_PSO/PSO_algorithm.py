@@ -1,8 +1,11 @@
-from math import cos, pi
 from tqdm import tqdm
 
 from generator import RandomNumberGenerator
 
+
+"""
+Sphere function 
+"""
 
 class ParticleSwarmOptimizer:
     def __init__(self, n, k, w, fl, fg, c, iterations, seed):

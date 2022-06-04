@@ -4,6 +4,11 @@ from docplex.mp.model import Model
 from generator import RandomNumberGenerator
 from timer import timeit
 
+"""
+Problem ciągły
+Kwadratowe zagadnienie przydziału
+"""
+
 
 def ConQuadraticAssignmentProblem_gen(seed, n, verbose=False):
     gen = RandomNumberGenerator(seedValue=seed)

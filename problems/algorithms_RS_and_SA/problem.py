@@ -5,12 +5,10 @@ import numpy as np
 from generator import RandomNumberGenerator
 from utils import TaskList, Task, Solution
 
-
 """
 Szeregowanie zadań na jednej maszynie z ważoną sumą opóźnień
 (Scheduling on a single machine with total weighted tardiness)
 """
-
 
 
 class Problem:
